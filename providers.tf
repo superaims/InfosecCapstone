@@ -1,4 +1,4 @@
-
+# posomielmiel.es CSP configuration
 provider "aws" {
   profile = var.profile
   region  = var.region
@@ -6,9 +6,9 @@ provider "aws" {
 
 provider "aws" {
   alias      = "plain_text_access_keys_provider"
-  region     = "us-west-1"
-  access_key = "AKIAIOSFODNN7EXAMPLE"
-  secret_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+  region     = "us-east-2"
+  access_key = "AKIAYVP4CIPPBPSKCLGN"
+  secret_key = "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"
 }
 
 terraform {
