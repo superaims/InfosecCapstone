@@ -1,3 +1,5 @@
+#Prompts for these on tesla.com 
+
 variable "s3_fqdn" {
   description = "fqdn for s3 bucket"
 }
