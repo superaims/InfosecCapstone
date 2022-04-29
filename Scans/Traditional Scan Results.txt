@@ -1,0 +1,324 @@
+
+
+       _               _              
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V / 
+  \___|_| |_|\___|\___|_|\_\___/ \_/  
+                                      
+By bridgecrew.io | version: 2.0.580 
+Update available 2.0.580 -> 2.0.914
+Run pip3 install -U checkov to update 
+
+
+terraform scan results:
+
+Passed checks: 14, Failed checks: 10, Skipped checks: 0
+
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_53
+
+Check: CKV_AWS_20: "S3 Bucket has an ACL defined which allows public READ access."
+	PASSED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/s3_1-acl-read-permissions-everyone
+
+Check: CKV_AWS_70: "Ensure S3 bucket does not allow an action with any Principal"
+	PASSED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_23
+
+Check: CKV_AWS_57: "S3 Bucket has an ACL defined which allows public WRITE access."
+	PASSED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/s3_2-acl-write-permissions-everyone
+
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_53
+
+Check: CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
+	PASSED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/s3_13-enable-logging
+
+Check: CKV_AWS_145: "Ensure that S3 buckets are encrypted with KMS by default"
+	PASSED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-s3-buckets-are-encrypted-with-kms-by-default
+
+Check: CKV_AWS_20: "S3 Bucket has an ACL defined which allows public READ access."
+	PASSED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/s3_1-acl-read-permissions-everyone
+
+Check: CKV_AWS_70: "Ensure S3 bucket does not allow an action with any Principal"
+	PASSED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_23
+
+Check: CKV_AWS_57: "S3 Bucket has an ACL defined which allows public WRITE access."
+	PASSED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/s3_2-acl-write-permissions-everyone
+
+Check: CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+	PASSED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/s3_14-data-encrypted-at-rest
+
+Check: CKV_AWS_93: "Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)"
+	PASSED for resource: aws_s3_bucket_policy.private
+	File: /main.tf:45-66
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_iam_53
+
+Check: CKV_AWS_70: "Ensure S3 bucket does not allow an action with any Principal"
+	PASSED for resource: aws_s3_bucket_policy.private
+	File: /main.tf:45-66
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_s3_23
+
+Check: CKV_AWS_41: "Ensure no hard coded AWS access key and secret key exists in provider"
+	PASSED for resource: aws.default
+	File: /providers.tf:2-5
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_5
+
+Check: CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
+	FAILED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/s3_13-enable-logging
+
+		5  | resource "aws_s3_bucket" "bucket_log" {
+		6  |   count  = var.loggingBucket == "" && var.create_logging_bucket && var.create_bucket ? 1 : 0
+		7  |   bucket = local.defaultLoggingBucket
+		8  |   acl    = "log-delivery-write"
+		9  | 
+		10 |   tags = {
+		11 |     name = "LoggingBucket"
+		12 |   }
+		13 | }
+
+
+Check: CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
+	FAILED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-s3-bucket-has-cross-region-replication-enabled
+
+		5  | resource "aws_s3_bucket" "bucket_log" {
+		6  |   count  = var.loggingBucket == "" && var.create_logging_bucket && var.create_bucket ? 1 : 0
+		7  |   bucket = local.defaultLoggingBucket
+		8  |   acl    = "log-delivery-write"
+		9  | 
+		10 |   tags = {
+		11 |     name = "LoggingBucket"
+		12 |   }
+		13 | }
+
+
+Check: CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
+	FAILED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/s3_16-enable-versioning
+
+		5  | resource "aws_s3_bucket" "bucket_log" {
+		6  |   count  = var.loggingBucket == "" && var.create_logging_bucket && var.create_bucket ? 1 : 0
+		7  |   bucket = local.defaultLoggingBucket
+		8  |   acl    = "log-delivery-write"
+		9  | 
+		10 |   tags = {
+		11 |     name = "LoggingBucket"
+		12 |   }
+		13 | }
+
+
+Check: CKV_AWS_145: "Ensure that S3 buckets are encrypted with KMS by default"
+	FAILED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-s3-buckets-are-encrypted-with-kms-by-default
+
+		5  | resource "aws_s3_bucket" "bucket_log" {
+		6  |   count  = var.loggingBucket == "" && var.create_logging_bucket && var.create_bucket ? 1 : 0
+		7  |   bucket = local.defaultLoggingBucket
+		8  |   acl    = "log-delivery-write"
+		9  | 
+		10 |   tags = {
+		11 |     name = "LoggingBucket"
+		12 |   }
+		13 | }
+
+
+Check: CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+	FAILED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/s3_14-data-encrypted-at-rest
+
+		5  | resource "aws_s3_bucket" "bucket_log" {
+		6  |   count  = var.loggingBucket == "" && var.create_logging_bucket && var.create_bucket ? 1 : 0
+		7  |   bucket = local.defaultLoggingBucket
+		8  |   acl    = "log-delivery-write"
+		9  | 
+		10 |   tags = {
+		11 |     name = "LoggingBucket"
+		12 |   }
+		13 | }
+
+
+Check: CKV_AWS_144: "Ensure that S3 bucket has cross-region replication enabled"
+	FAILED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/ensure-that-s3-bucket-has-cross-region-replication-enabled
+
+		15 | resource "aws_s3_bucket" "this" {
+		16 |   count         = var.create_bucket ? 1 : 0
+		17 |   bucket        = var.s3_fqdn
+		18 |   force_destroy = true
+		19 |   tags          = merge(var.tags, tomap({"Name" = format("%s", var.s3_fqdn)}))
+		20 | 
+		21 |   dynamic "logging" {
+		22 |     for_each = var.create_logging_bucket == true ? [1] : []
+		23 |     content {
+		24 |       target_bucket = var.loggingBucket != "" ? var.loggingBucket : local.defaultLoggingBucket
+		25 |       target_prefix = "log/"
+		26 |     }
+		27 |   }
+		28 | 
+		29 |   dynamic "server_side_encryption_configuration" {
+		30 |     for_each = var.enable_default_server_side_encryption == true ? [1] : []
+		31 |     content {
+		32 |       rule {
+		33 |         apply_server_side_encryption_by_default {
+		34 |           sse_algorithm = "aws:kms"
+		35 |         }
+		36 |       }
+		37 |     }
+		38 |   }
+		39 | 
+		40 |   versioning {
+		41 |     enabled = var.enable_versioning
+		42 |   }
+		43 | }
+
+
+Check: CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enabled"
+	FAILED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/s3_16-enable-versioning
+
+		15 | resource "aws_s3_bucket" "this" {
+		16 |   count         = var.create_bucket ? 1 : 0
+		17 |   bucket        = var.s3_fqdn
+		18 |   force_destroy = true
+		19 |   tags          = merge(var.tags, tomap({"Name" = format("%s", var.s3_fqdn)}))
+		20 | 
+		21 |   dynamic "logging" {
+		22 |     for_each = var.create_logging_bucket == true ? [1] : []
+		23 |     content {
+		24 |       target_bucket = var.loggingBucket != "" ? var.loggingBucket : local.defaultLoggingBucket
+		25 |       target_prefix = "log/"
+		26 |     }
+		27 |   }
+		28 | 
+		29 |   dynamic "server_side_encryption_configuration" {
+		30 |     for_each = var.enable_default_server_side_encryption == true ? [1] : []
+		31 |     content {
+		32 |       rule {
+		33 |         apply_server_side_encryption_by_default {
+		34 |           sse_algorithm = "aws:kms"
+		35 |         }
+		36 |       }
+		37 |     }
+		38 |   }
+		39 | 
+		40 |   versioning {
+		41 |     enabled = var.enable_versioning
+		42 |   }
+		43 | }
+
+
+Check: CKV_AWS_41: "Ensure no hard coded AWS access key and secret key exists in provider"
+	FAILED for resource: aws.plain_text_access_keys_provider
+	File: /providers.tf:7-12
+	Guide: https://docs.bridgecrew.io/docs/bc_aws_secrets_5
+
+		7  | provider "aws" {
+		8  |   alias      = "plain_text_access_keys_provider"
+		9  |   region     = "us-west-1"
+		10 |   access_key = "AKIAIOSFODNN7EXAMPLE"
+		11 |   secret_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+		12 | }
+
+
+Check: CKV2_AWS_6: "Ensure that S3 bucket has a Public Access block"
+	FAILED for resource: aws_s3_bucket.bucket_log
+	File: /main.tf:5-13
+	Guide: https://docs.bridgecrew.io/docs/s3-bucket-should-have-public-access-blocks-defaults-to-false-if-the-public-access-block-is-not-attached
+
+		5  | resource "aws_s3_bucket" "bucket_log" {
+		6  |   count  = var.loggingBucket == "" && var.create_logging_bucket && var.create_bucket ? 1 : 0
+		7  |   bucket = local.defaultLoggingBucket
+		8  |   acl    = "log-delivery-write"
+		9  | 
+		10 |   tags = {
+		11 |     name = "LoggingBucket"
+		12 |   }
+		13 | }
+
+
+Check: CKV2_AWS_6: "Ensure that S3 bucket has a Public Access block"
+	FAILED for resource: aws_s3_bucket.this
+	File: /main.tf:15-43
+	Guide: https://docs.bridgecrew.io/docs/s3-bucket-should-have-public-access-blocks-defaults-to-false-if-the-public-access-block-is-not-attached
+
+		15 | resource "aws_s3_bucket" "this" {
+		16 |   count         = var.create_bucket ? 1 : 0
+		17 |   bucket        = var.s3_fqdn
+		18 |   force_destroy = true
+		19 |   tags          = merge(var.tags, tomap({"Name" = format("%s", var.s3_fqdn)}))
+		20 | 
+		21 |   dynamic "logging" {
+		22 |     for_each = var.create_logging_bucket == true ? [1] : []
+		23 |     content {
+		24 |       target_bucket = var.loggingBucket != "" ? var.loggingBucket : local.defaultLoggingBucket
+		25 |       target_prefix = "log/"
+		26 |     }
+		27 |   }
+		28 | 
+		29 |   dynamic "server_side_encryption_configuration" {
+		30 |     for_each = var.enable_default_server_side_encryption == true ? [1] : []
+		31 |     content {
+		32 |       rule {
+		33 |         apply_server_side_encryption_by_default {
+		34 |           sse_algorithm = "aws:kms"
+		35 |         }
+		36 |       }
+		37 |     }
+		38 |   }
+		39 | 
+		40 |   versioning {
+		41 |     enabled = var.enable_versioning
+		42 |   }
+		43 | }
+
+
+secrets scan results:
+
+Passed checks: 0, Failed checks: 2, Skipped checks: 0
+
+Check: CKV_SECRET_2: "AWS Access Key"
+	FAILED for resource: 25910f981e85ca04baf359199dd0bd4a3ae738b6
+	File: /providers.tf:10-11
+	Guide: https://docs.bridgecrew.io/docs/git_secrets_2
+
+		10 |   access_key = "AKIAIOSFODNN7EXAMPLE"
+
+
+Check: CKV_SECRET_6: "Base64 High Entropy String"
+	FAILED for resource: d70eab08607a4d05faa2d0d6647206599e9abc65
+	File: /providers.tf:11-12
+	Guide: https://docs.bridgecrew.io/docs/git_secrets_6
+
+		11 |   secret_key = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+
+
