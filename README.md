@@ -9,4 +9,4 @@ To encourage security champions to write safer code and identify infrastructure 
 
 Check out the [slides](https://docs.google.com/presentation/d/1ILPJEjltmrGJ4Uj2010yPnes27JEmMnwRXv2OAkaEeg/edit?usp=sharing).
 
-Many thanks to my original partner in the earliest iteration of this project. Check out our "Terraform for Threat Emulation for the Uninitiated" workshop for %27 [Hack Miami](https://www.youtube.com/watch?v=YlpFMBcAp2c).
+Many thanks to my colleague in the earliest iteration of this project. Check out our "Terraform for Threat Emulation for the Uninitiated" workshop for %27 [Hack Miami](https://www.youtube.com/watch?v=YlpFMBcAp2c).
