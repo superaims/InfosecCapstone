@@ -1,6 +1,6 @@
 
 # Terraform for Threat Emulation
-=======
+
 ## Cybersecurity Capstone
 
 To encourage security champions to write safer code and identify infrastructure threat vectors quickly. Threat emulation offers a distinct advantage over stale and scripted cyber ranges: attacks are live and evolve, like real incidents. Infrastructure as code (IaC) is a natural partner in offensive attack simulations; with it, organizations can quickly provision and configure sandbox environments to test their code and platforms-- before someone else does. This solution proposes threat emulation at scale, using infrastructure as code (IaC). Utilizing intentionally vulnerable Terraform templates and leveraging code to replicate insecure architectural patterns, security practitioners can deploy AWS cloud environments. With policy-as-code, secure infrastructure development best practices to mitigate risk on public cloud resources can be a written artifact.
