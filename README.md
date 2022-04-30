@@ -8,3 +8,5 @@ To encourage security champions to write safer code and identify infrastructure 
 [The Well Architected Framework](https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html), [AWS Security Reference Architecture](https://docs.aws.amazon.com/prescriptive-guidance/latest/security-reference-architecture/architecture.html), [MITRE ATT&CK Framework](https://attack.mitre.org/matrices/enterprise/), [Github Code Security Guide](https://docs.github.com/en/code-security/guides), [OWASP's IaC Security Cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Infrastructure_as_Code_Security_Cheat_Sheet.html), and [OWASP’s Cloud-Native Application Security Top 10](https://owasp.org/www-project-cloud-native-application-security-top-10/) guide offensive attack simulation tactics and mitigations in this repository. 
 
 Check out the [slides](https://docs.google.com/presentation/d/1ILPJEjltmrGJ4Uj2010yPnes27JEmMnwRXv2OAkaEeg/edit?usp=sharing).
+
+Many thanks to my original partner in the earliest iteration of this project. Check out our "Terraform for Threat Emulation for the Uninitiated" workshop for %27 [Hack Miami](https://www.youtube.com/watch?v=YlpFMBcAp2c).
